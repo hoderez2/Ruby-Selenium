@@ -83,7 +83,7 @@ RSpec.describe "PractiTest integration demo" do
   it "opens Example.com and validates the page" do
     page = HomePage.new(@driver)
     page.open
-    expect(page.title).to include("Example Domain")
+    expect(page.title).to include("Example Domain0")
     expect(page.heading_text).to eq("Example Domain")
   end
 end
