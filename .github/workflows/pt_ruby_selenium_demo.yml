@@ -1,0 +1,42 @@
+name: Ruby Selenium to PractiTest
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-report:
+    runs-on: macos-latest
+
+    env:
+      SSL_CERT_FILE: /etc/ssl/cert.pem
+      PT_BASE_URL: ${{ secrets.PT_BASE_URL }}
+      PT_PROJECT_ID: ${{ secrets.PT_PROJECT_ID }}
+      PT_API_TOKEN: ${{ secrets.PT_API_TOKEN }}
+      PT_EMAIL: ${{ secrets.PT_EMAIL }}
+      PT_INSTANCE_ID: ${{ secrets.PT_INSTANCE_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run RSpec (reports to PractiTest)
+        run: bundle exec rspec
+
+      - name: Upload artifacts (screenshots)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec-artifacts
+          path: artifacts/
+          if-no-files-found: ignore
