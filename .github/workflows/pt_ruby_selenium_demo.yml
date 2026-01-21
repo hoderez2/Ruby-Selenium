@@ -16,6 +16,7 @@ jobs:
       PT_API_TOKEN: ${{ secrets.PT_API_TOKEN }}
       PT_EMAIL: ${{ secrets.PT_EMAIL }}
       PT_INSTANCE_ID: ${{ secrets.PT_INSTANCE_ID }}
+      PT_TESTSET_ID: ${{ secrets.PT_TESTSET_ID }}
 
     steps:
       - name: Checkout

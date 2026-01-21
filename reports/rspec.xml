@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="1" skipped="0" failures="0" errors="0" time="1.820058" timestamp="2026-01-13T21:26:05+02:00" hostname="Erezs-MacBook-Pro.local">
+<testsuite name="rspec" tests="2" skipped="0" failures="0" errors="0" time="6.849192" timestamp="2026-01-21T18:11:55+02:00" hostname="Erezs-MacBook-Pro.local">
 <properties>
-<property name="seed" value="24597"/>
+<property name="seed" value="45498"/>
 </properties>
-<testcase classname="spec.example_spec" name="PractiTest integration demo opens Example.com and validates the page" file="./spec/example_spec.rb" time="1.818863"></testcase>
+<testcase classname="spec.example_spec" name="PractiTest integration demo opens Example and validates the page" file="./spec/example_spec.rb" time="3.160459"></testcase>
+<testcase classname="spec.example_spec" name="PractiTest integration demo Test API" file="./spec/example_spec.rb" time="3.687492"></testcase>
 </testsuite>
