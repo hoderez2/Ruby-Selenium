@@ -68,9 +68,15 @@ RSpec.describe "PractiTest integration demo" do
 
     puts "Sending run-duration=#{run_duration}"
 
+    set_id = ENV.fetch("PT_TESTSET_ID").to_i
+    test_name = example.description
+
+    instance_id = reporter.ensure_instance_for_test_name!(set_id: set_id, test_name: test_name)
+
+
            
     reporter.create_run(
-        instance_id: ENV.fetch("PT_INSTANCE_ID").to_i,
+        instance_id: instance_id,
         exit_code: exit_code,
         automated_output: output,
         run_duration: run_duration,
@@ -80,10 +86,17 @@ RSpec.describe "PractiTest integration demo" do
     @driver.quit if @driver
   end
 
-  it "opens Example.com and validates the page" do
+  it "opens Example and validates the page" do
     page = HomePage.new(@driver)
     page.open
-    expect(page.title).to include("Example Domain0")
+    expect(page.title).to include("Example Domain")
+    expect(page.heading_text).to eq("Example Domain")
+  end
+
+  it "Test API" do
+    page = HomePage.new(@driver)
+    page.open
+    expect(page.title).to include("Example Domain")
     expect(page.heading_text).to eq("Example Domain")
   end
 end
