@@ -132,8 +132,6 @@ end
       }
     }
 
-# puts "Sending run-duration=#{run_duration}"
-
     if attachments.any?
       payload[:data][:files] = {
         data: attachments.map do |path|
